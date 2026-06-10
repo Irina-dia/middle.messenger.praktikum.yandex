@@ -1,0 +1,73 @@
+<main class="main">
+  <div class="registration__wrapper">
+    <div class="registration">
+      {{> title
+        title="Регистрация"
+      }} 
+      <form class="form registration__form">
+        <div class="form__fields">
+          {{> input
+            label="Почта"
+            type="email"
+            name="email"
+            placeholder="Почта"
+          }}
+
+          {{> input
+            label="Логин"
+            type="text"
+            name="login"
+            placeholder="Логин"
+          }}
+
+          {{> input
+            label="Имя"
+            type="text"
+            name="first_name"
+            placeholder="Имя"
+          }}
+
+          {{> input
+            label="Фамилия"
+            type="text"
+            name="second_name"
+            placeholder="Фамилия"
+          }}
+
+          {{> input
+            label="Телефон"
+            type="tel"
+            name="phone"
+            placeholder="Телефон"
+          }}
+          
+          {{> input
+            label="Пароль"
+            type="password"
+            name="password"
+            placeholder="Пароль"
+          }}
+          
+          {{> input
+            label="Пароль (ещё раз)"
+            type="password"
+            name="confirm_password"
+            placeholder="Пароль (ещё раз)"
+          }}
+        </div>
+        
+        <div class="form__action">
+          {{> button
+            type="submit"
+            buttonName="Авторизоваться"
+          }}
+
+          {{> link
+            href="#auth"
+            linkName="Войти"
+          }}
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

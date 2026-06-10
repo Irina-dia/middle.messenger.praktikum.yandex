@@ -1,0 +1,40 @@
+@import './variables.scss';
+@import './mixins.scss';
+@import '../components/button/button.scss';
+@import '../components/link/link.scss';
+@import '../components/input/input.scss';
+@import '../components/title/title.scss';
+@import '../components/paragraph/paragraph.scss';
+@import '../components/chat-item/chat-item.scss';
+@import '../components/input-profile/input-profile.scss';
+@import '../pages/auth-page/auth-page.scss';
+@import '../pages/registration-page/registration-page.scss';
+@import '../pages/chat-page/chat-page.scss';
+@import '../pages/profile-page/profile-page.scss';
+@import './error-page.scss';
+
+body {
+  color: $main-black;
+  font-family: $font-family;
+}
+
+.form {
+  &__fields {
+    width: 100%;
+    @include flex-column-center;
+    gap: 12px;
+  }
+
+  &__action {
+    width: 100%;
+    @include flex-column-center;
+    gap: 14px;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background: $snow;
+  border-right: 1px solid #eaeaea;
+}

@@ -1,0 +1,30 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin circle-blue($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background: $blue;
+}
+
+@mixin form-auth-registration {
+  width: 340px;
+  @include flex-column-center;
+  margin: auto;
+  padding: 50px 30px 30px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
+  background: $white;
+}
