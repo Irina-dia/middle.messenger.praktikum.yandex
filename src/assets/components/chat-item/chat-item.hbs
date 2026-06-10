@@ -1,0 +1,35 @@
+<li class="chat-item" data-id="{{id}}">
+  <div class="chat-item__block {{#if unreadCount}}chat-item__block--unread{{/if}}">
+    <div class="chat-item__avatar">
+      <img src="{{avatarUrl}}" alt="avatar" />
+    </div>
+    <div class="chat-item__description">
+      <div class="chat-item__name">
+        {{title}}
+        {{#with lastMessage}}
+          <time class="chat-item__date">
+            {{time}}
+          </time>
+        {{/with}}
+      </div>
+      {{#with lastMessage}}
+        <div class="chat-item__message">
+          {{#if (eq author "memberName")}}
+            <span class="chat-item__message_dark">
+              Вы:
+            </span>
+            {{{text}}}
+          {{else}}
+            {{{text}}}
+          {{/if}}
+        </div>
+      {{/with}}
+      <div class="chat-item__members">
+
+      </div>
+      {{#if unreadCount}}
+        <span class="chat-item__badge">{{unreadCount}}</span>
+      {{/if}}
+    </div>
+  </div>
+</li>
