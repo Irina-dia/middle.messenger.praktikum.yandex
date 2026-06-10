@@ -8,7 +8,7 @@
   margin: auto 18px;
   @include flex-center;
   @include circle-blue(28px);
-  background: $blue  url("../../../public/images/arrow-message.svg") no-repeat center;
+  background: $blue url("/images/arrow-message.svg") no-repeat center;
   transform: rotate(180deg);
   border: none;
   cursor: pointer;

@@ -2,7 +2,7 @@ export const chats = [
   {
     id: 1,
     title: "Андрей",
-    avatarUrl: "../../../public/images/avatar-img.svg",
+    avatarUrl: "./images/avatar-img.svg",
     unreadCount: 2,
     lastMessage: {
       author: "Андрей",
@@ -10,13 +10,13 @@ export const chats = [
       time: "10:49"
     },
     members: [
-      { name: "Андрей", avatarUrl: "../../../public/images/avatar-img.svg" }
+      { name: "Андрей", avatarUrl: "./images/avatar-img.svg" }
     ]
   },
   {
     id: 2,
     title: "Киноклуб",
-    avatarUrl: "../../../public/images/avatar-img.svg",
+    avatarUrl: "./images/avatar-img.svg",
     unreadCount: 0,
     lastMessage: {
       author: "memberName",
@@ -24,13 +24,13 @@ export const chats = [
       time: "12:00"
     },
     members: [
-      { name: "Киноклуб", avatarUrl: "../../../public/images/avatar-img.svg" }
+      { name: "Киноклуб", avatarUrl: "./images/avatar-img.svg" }
     ]
   },
   {
     id: 3,
     title: "Илья",
-    avatarUrl: "../../../public/images/avatar-img.svg",
+    avatarUrl: "./images/avatar-img.svg",
     unreadCount: 4,
     lastMessage: {
       author: "Илья",
@@ -38,13 +38,13 @@ export const chats = [
       time: "15:12"
     },
     members: [
-      { name: "Илья", avatarUrl: "../../../public/images/avatar-img.svg" }
+      { name: "Илья", avatarUrl: "./images/avatar-img.svg" }
     ]
   },
   {
     id: 4,
     title: "Вадим",
-    avatarUrl: "../../../public/images/avatar-img.svg",
+    avatarUrl: "./images/avatar-img.svg",
     unreadCount: 0,
     lastMessage: {
       author: "memberName",
@@ -52,13 +52,13 @@ export const chats = [
       time: "Пт"
     },
     members: [
-      { name: "Вадим", avatarUrl: "../../../public/images/avatar-img.svg" }
+      { name: "Вадим", avatarUrl: "./images/avatar-img.svg" }
     ]
   },  
   {
     id: 5,
     title: "тет-а-теты",
-    avatarUrl: "../../../public/images/avatar-img.svg",
+    avatarUrl: "./images/avatar-img.svg",
     unreadCount: 0,
     lastMessage: {
       author: "тет-а-теты",
@@ -66,13 +66,13 @@ export const chats = [
       time: "Ср"
     },
     members: [
-      { name: "тет-а-теты", avatarUrl: "../../../public/images/avatar-img.svg" }
+      { name: "тет-а-теты", avatarUrl: "./images/avatar-img.svg" }
     ]
   },  
   {
     id: 6,
     title: "1, 2, 3",
-    avatarUrl: "../../../public/images/avatar-img.svg",
+    avatarUrl: "./images/avatar-img.svg",
     unreadCount: 0,
     lastMessage: {
       author: "1, 2, 3",
@@ -80,13 +80,13 @@ export const chats = [
       time: "Пн"
     },
     members: [
-      { name: "1, 2, 3", avatarUrl: "../../../public/images/avatar-img.svg" }
+      { name: "1, 2, 3", avatarUrl: "./images/avatar-img.svg" }
     ]
   },  
   {
     id: 7,
     title: "Design Destroyer",
-    avatarUrl: "../../../public/images/avatar-img.svg",
+    avatarUrl: "./images/avatar-img.svg",
     unreadCount: 0,
     lastMessage: {
       author: "Design Destroyer",
@@ -94,13 +94,13 @@ export const chats = [
       time: "Пн"
     },
     members: [
-      { name: "Design Destroyer", avatarUrl: "../../../public/images/avatar-img.svg" }
+      { name: "Design Destroyer", avatarUrl: "./images/avatar-img.svg" }
     ]
   },  
   {
     id: 8,
     title: "Day.",
-    avatarUrl: "../../../public/images/avatar-img.svg",
+    avatarUrl: "./images/avatar-img.svg",
     unreadCount: 0,
     lastMessage: {
       author: "Day.",
@@ -108,13 +108,13 @@ export const chats = [
       time: "1 Мая 2020"
     },
     members: [
-      { name: "Day.", avatarUrl: "../../../public/images/avatar-img.svg" }
+      { name: "Day.", avatarUrl: "./images/avatar-img.svg" }
     ]
   },  
   {
     id: 9,
     title: "Стас Рогозин",
-    avatarUrl: "../../../public/images/avatar-img.svg",
+    avatarUrl: "./images/avatar-img.svg",
     unreadCount: 0,
     lastMessage: {
       author: "Стас Рогозин",
@@ -122,7 +122,7 @@ export const chats = [
       time: "Пт"
     },
     members: [
-      { name: "Стас Рогозин", avatarUrl: "../../../public/images/avatar-img.svg" }
+      { name: "Стас Рогозин", avatarUrl: "./images/avatar-img.svg" }
     ]
   },
 ];
