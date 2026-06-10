@@ -26,7 +26,7 @@
     color: $gray;
 
     &::after {
-      content: url("../../../public/images/arrow.svg");
+      content: url("/images/arrow.svg");
       position: absolute;
       width: 4px;
       height: 8px;
@@ -59,7 +59,7 @@
   &__button{
     @include flex-center; 
     @include circle-blue(28px);
-    background: $blue  url("../../../public/images/arrow-message.svg") no-repeat center;
+    background: $blue  url("/images/arrow-message.svg") no-repeat center;
     border: none;
     cursor: pointer;   
   }
