@@ -1,68 +1,51 @@
-import './assets/styles/style.scss'
+import './assets/styles/style.scss';
+import { Block } from './lib/Block';
 import Handlebars from 'handlebars';
 
-import authPage from './assets/pages/auth-page/auth-page.hbs?raw';
-import regPage from './assets/pages/registration-page/registration-page.hbs?raw';
-import notFoundPage from './assets/pages/404-error-page/404-error-page.hbs?raw';
-import internalServerErrorPage from './assets/pages/500-error-page/500-error-page.hbs?raw';
-import chatPage from './assets/pages/chat-page/chat-page.hbs?raw';
-import profilePage from './assets/pages/profile-page/profile-page.hbs?raw';
-import button from './assets/components/button/button.hbs?raw';
-import link from './assets/components/link/link.hbs?raw';
-import input from './assets/components/input/input.hbs?raw';
-import title from './assets/components/title/title.hbs?raw';
-import paragraph from './assets/components/paragraph/paragraph.hbs?raw';
-import chatItem from './assets/components/chat-item/chat-item.hbs?raw';
-import inputProfile from './assets/components/input-profile/input-profile.hbs?raw';
-import { chats } from './assets/mocks/chats.js';
-import lt from './assets/helpers/lt.js';
-import eq from './assets/helpers/eq.js';
+import eq from './assets/helpers/eq';
 
-Handlebars.registerPartial('button', button);
-Handlebars.registerPartial('link', link);
-Handlebars.registerPartial('input', input);
-Handlebars.registerPartial('input-profile', inputProfile);
-Handlebars.registerPartial('title', title);
-Handlebars.registerPartial('paragraph', paragraph);
-Handlebars.registerPartial("chat-item", chatItem);
+/*pages */
+import { AuthPage } from './pages/auth-page';
+import { RegistrationPage} from './pages/registration-page';
+import { Error404 } from './pages/404-error-page';
+import { Error500 } from './pages/500-error-page';
+import { ChatPage } from './pages/chat-page/chat-page';
+import { ProfilePage } from './pages/profile-page/profile-page';
 
-Handlebars.registerHelper("lt", lt);
-Handlebars.registerHelper("eq", eq);
+import { registerComponents } from './lib/RegisterComponents';
 
-function render(templateName: string, pageData = {}) {
+registerComponents();
+
+Handlebars.registerHelper('eq', eq);
+
+const routes = {
+  '#profile': ProfilePage,
+  '': AuthPage,
+  '#auth': AuthPage,
+  '#reg': RegistrationPage,
+  '#chat': ChatPage,
+  '#404': Error404,
+  '#500': Error500,
+};
+
+function render(page: Block) {
   const app = document.querySelector('#app');
 
   if (!app) return;
 
-  const template = Handlebars.compile(templateName);
-  app.innerHTML = template(pageData);
+  const pageElement = page.element();
+
+  if (!pageElement) {
+    return;
+  }
+
+  app.replaceChildren(pageElement);
 }
 
 function router() {
-  switch(window.location.hash) {
-    case '':
-    case '#auth':
-      render(authPage);
-      break;
-    case '#reg':
-      render(regPage);
-      break;
-    case '#chat':
-       render(chatPage, { chats });
-      break;
-    case '#profile':
-       render(profilePage);
-      break;
-    case '#404':
-      render(notFoundPage);
-      break;
-    case '#500':
-      render(internalServerErrorPage);
-      break;
-    default:      
-      render(notFoundPage);
+    const Page = routes[window.location.hash as keyof typeof routes] ?? Error404;
+    render(new Page());
   }
-}
 
 window.addEventListener('load', router);
 window.addEventListener('hashchange', router);

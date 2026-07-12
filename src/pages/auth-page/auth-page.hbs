@@ -1,0 +1,40 @@
+<main class="main">
+  <div class="auth__wrapper">
+    <div class="auth">
+      {{{ Title
+        title="Вход"
+      }}}
+      <form class="form auth__form" method="post" ref="authForm" novalidate>
+        <div class="form__fields">
+          {{{ Input
+            name="login"
+            type="text"
+            placeholder="Логин"
+            label="Логин"
+          }}}
+
+          {{{ Input
+            name="password"
+            type="password"
+            placeholder="Пароль"
+            label="Пароль"
+          }}}
+        </div>
+
+
+        <div class="form__action">
+          {{{ Button
+            type="submit"
+            label="Авторизоваться"
+          }}}
+
+          {{{ Link
+            text="Нет аккаунта?"
+            href="#reg"
+          }}}
+        </div>
+
+      </form>
+    </div>
+  </div>
+</main>

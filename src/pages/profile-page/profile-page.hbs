@@ -1,0 +1,148 @@
+<main class="main profile-page">
+  <aside class="profile-page__sidebar sidebar">
+    {{{ Link
+      href="#chat"
+      className="back__link"
+    }}}
+  </aside>
+  <section class="profile-page__content profile">
+    <div class="profile__wrapper">
+      <div class="profile__header">
+        <div class="profile__image-wrapper">
+            <img src="./images/user-defolt.svg" alt="avatar" class="profile__image">
+            <div class="profile__image profile__image_overlay">
+                Поменять<br>аватар
+            </div>
+        </div>
+        <div class="profile__name">
+          {{{ Title
+            title="Иван"
+            className="profile__title"
+          }}}
+        </div>
+      </div>
+      {{#if isPassword}}
+      <form class="form profile__form profile__form-password" ref="profileFormPassword" novalidate>
+        <div class="profile__password">
+          {{{ InputProfile
+            name="old_password"
+            label="Старый пароль"
+            type="password"
+            value="•••••••••"
+            isReadonly=isView
+          }}}
+
+          {{{ InputProfile
+            name="new_password"
+            label="Новый пароль"
+            type="password"
+            value="•"
+            isReadonly=isView
+          }}}
+
+          {{{ InputProfile
+            name="repeat_password"
+            label="Повторите новый пароль"
+            type="password"
+            value="•"
+            isReadonly=isView
+          }}}
+        </div>
+        <div class="profile__button-wrapper">
+          {{{ Button
+            type="submit"
+            label="Сохранить"
+            id="savePassword"
+          }}}
+        </div>
+      </form>
+      {{else}}
+      <form class="form profile__form" ref="profileForm" novalidate>
+        <div class="profile__info">
+          {{{ InputProfile
+            name="email"
+            label="Почта"
+            type="email"
+            value="pochta@yandex.ru"
+            isReadonly=isView
+          }}}
+
+          {{{ InputProfile
+            name="login"
+            label="Логин"
+            type="text"
+            value="ivanivanov"
+            isReadonly=isView
+          }}}
+
+          {{{ InputProfile
+            name="first_name"
+            label="Имя"
+            type="text"
+            value="Иван"
+            isReadonly=isView
+          }}}
+
+          {{{ InputProfile
+            name="second_name"
+            label="Фамилия"
+            type="text"
+            value="Иванов"
+            isReadonly=isView
+          }}}
+
+          {{{ InputProfile
+            name="display_name"
+            label="Имя в чате"
+            type="text"
+            value="Иван"
+            isReadonly=isView
+          }}}
+
+          {{{ InputProfile
+            name="phone"
+            label="Телефон"
+            type="tel"
+            value="+79099673030"
+            isReadonly=isView
+          }}}
+        </div>
+        {{#unless isView}}
+          <div class="profile__button-wrapper">
+            {{{ Button
+              type="submit"
+              label="Сохранить"
+              id="saveForm"
+            }}}
+          </div>
+        {{/unless}}
+      </form>
+      {{/if}}
+
+      {{#if isView}}
+        <div class="profile__actions">
+          {{{ Button
+            type="button"
+            label="Изменить данные"
+            className="profile__button"
+            id="editBtn"
+          }}}
+
+          {{{ Button
+            type="button"
+            label="Изменить пароль"
+            className="profile__button"
+            id="changeBtn"
+          }}}
+
+          {{{ Button
+            type="button"
+            label="Выйти"
+            className="profile__button profile__button-logout"
+            id="logoutBtn"
+          }}}
+        </div>
+      {{/if}}
+    </div>
+  </section>
+</main>
