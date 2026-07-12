@@ -1,0 +1,136 @@
+.profile-page {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.back__link {
+  margin: auto 18px;
+  @include flex-center;
+  @include circle-blue(28px);
+  background: $blue url("/images/arrow-message.svg") no-repeat center;
+  transform: rotate(180deg);
+  border: none;
+  cursor: pointer;
+}
+
+.profile {
+  width: 100%;
+  @include flex-column-center;
+
+  &__wrapper{
+    margin: 0 auto;
+    width: 510px;
+    @include flex-column-center;
+    gap: 50px;
+  }
+
+  &__header {
+    @include flex-column-center;
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    max-width: 130px;
+    max-height: 130px;
+    min-width: 130px;
+    min-height: 130px;
+    margin-bottom: 21px;
+    display: inline-block;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      content: '';
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 1;
+    }
+
+    &:hover::after,
+    &:hover .profile__image_overlay {
+        opacity: 1;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  &__image_overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $white;
+    font-size: 13px;
+    line-height: 1.08;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 2;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;
+    color: $main-black;
+    margin-bottom: 0;
+  }
+
+  &__form {
+    margin: 0 auto;
+    width: 510px;
+    @include flex-column-center;
+
+  }
+
+  &__info {
+    width: 100%;
+  }
+
+  &__password {
+    width: 100%;
+  }
+
+  &__actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__button {
+    color: $blue;
+    text-decoration: none;
+    display: block;
+    padding: 0 0 10px;
+    text-align: left;
+    border-radius: 0;
+    border-bottom: 1px solid $off-white;
+    background: none;
+    font-size: 13px;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+
+    &-logout {
+      color: $red;
+      border-bottom: none;
+    }
+
+    &-wrapper {
+      margin-top: 60px;
+      width: 280px;
+    }
+  }
+}

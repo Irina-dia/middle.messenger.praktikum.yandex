@@ -1,0 +1,56 @@
+<main class="main chat-page">
+  <aside class="chat-page__sidebar sidebar">
+    {{{ Link
+      text="Профиль"
+      href="#profile"
+      className="chat-page__profile"
+    }}}
+    <form class="sidebar__search search" action="#" ref="searchForm">
+      {{{ Input
+        name="search"
+        type="text"
+        placeholder="Поиск"
+        className="search__input"
+      }}}
+      <div class="search__placeholder">
+        <img src="./images/search.svg" alt="search">
+        <span>Поиск</span>
+      </div>
+    </form>
+    <nav class="chat-page__nav">
+      <ul class="chat-list">
+        {{#each chats}}
+          {{{ ChatItem
+            id = id
+            title = title
+            avatarUrl = avatarUrl
+            unreadCount = unreadCount
+            lastMessage = lastMessage
+          }}}
+        {{/each}}
+      </ul>
+    </nav>
+  </aside>
+
+  <section class="chat-page__content">
+    {{{ Paragraph
+      text="Выберите чат чтобы отправить сообщение"
+      className="chat-page__paragraph"
+    }}}
+    <form class="form new-message" ref="messageForm">
+      {{{ Input
+        name="message"
+        type="text"
+        placeholder="Сообщение"
+        className="new-message__input"
+        label="Сообщение"
+      }}}
+
+      {{{ Button
+        type="submit"
+        className="new-message__button"
+        label=""
+      }}}
+    </form>
+  </section>
+</main>

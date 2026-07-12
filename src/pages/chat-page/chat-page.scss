@@ -1,0 +1,126 @@
+.chat-page{
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+
+  &__paragraph {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    color: $gray;
+  }
+
+  &__sidebar {
+    width: 310px;
+  }
+
+  &__profile {
+    padding-right: 10px;
+    margin: 21px 10px 23px 0;
+    position: relative;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    text-align: right;
+    color: $gray;
+
+    &::after {
+      content: url("/images/arrow.svg");
+      position: absolute;
+      width: 4px;
+      height: 8px;
+      right: 0;
+      top: calc(50% - 5px);
+    }
+  }
+
+  &__content {
+    position: relative;
+    flex: 1;
+    @include flex-column-center;
+  }
+
+  &__paragraph {
+  margin: auto;
+  }
+}
+
+.new-message {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin-top: auto;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__button{
+    @include flex-center;
+    @include circle-blue(28px);
+    background: $blue  url("/images/arrow-message.svg") no-repeat center;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.chat-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.search {
+  position: relative;
+  width: 290px;
+  padding: 0 10px;
+  margin-bottom: 14px;
+
+  &:focus-within {
+    .search__placeholder {
+      display: none;
+    }
+  }
+
+  &__input {
+    width: 290px;
+    height: 32px;
+    padding: 0 10px;
+    box-sizing:border-box;
+    border-radius: 5px;
+    background: $white-smoke;
+    color: $gray;
+    border: none;
+  }
+
+  &__placeholder {
+    position: absolute;
+    margin-left: -24px;
+    inset: 0;
+    @include flex-center;
+    gap: 4px;
+    color: $gray;
+    pointer-events: none;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    span {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 1;
+      color: $gray;
+    }
+  }
+}
