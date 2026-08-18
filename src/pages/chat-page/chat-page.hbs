@@ -2,7 +2,7 @@
   <aside class="chat-page__sidebar sidebar">
     {{{ Link
       text="Профиль"
-      href="#profile"
+      href="/settings"
       className="chat-page__profile"
     }}}
     <form class="sidebar__search search" action="#" ref="searchForm">
@@ -17,6 +17,21 @@
         <span>Поиск</span>
       </div>
     </form>
+    <form class="new-chat" ref="newChatForm">
+      {{{ Input
+        name="title"
+        type="text"
+        placeholder="Название чата"
+        className="new-chat__input"
+        label="Назовите новый чат"
+      }}}
+
+      {{{ Button
+        type="submit"
+        className="new-chat__button"
+        label="Создать новый чат"
+      }}}
+    </form>
     <nav class="chat-page__nav">
       <ul class="chat-list">
         {{#each chats}}
@@ -26,6 +41,8 @@
             avatarUrl = avatarUrl
             unreadCount = unreadCount
             lastMessage = lastMessage
+            isActive = isActive
+            onClick = ../onChatClick
           }}}
         {{/each}}
       </ul>
@@ -33,10 +50,113 @@
   </aside>
 
   <section class="chat-page__content">
-    {{{ Paragraph
-      text="Выберите чат чтобы отправить сообщение"
-      className="chat-page__paragraph"
-    }}}
+    {{#if selectedChatId}}
+      <header class="chat-page__header">
+        {{#each chats}}
+          {{#if (eq id ../selectedChatId)}}
+            <div class="chat-page__chat-info">
+              <div class="chat-page__avatar">
+                {{#if avatarUrl}}
+                  <img src="{{avatarUrl}}" alt="{{title}}">
+                {{else}}
+                  <div class="chat-page__avatar-placeholder"></div>
+                {{/if}}
+              </div>
+
+              <h2 class="chat-page__title">
+                {{title}}
+              </h2>
+            </div>
+          {{/if}}
+        {{/each}}
+        <button
+          type="button"
+          class="chat-page__menu-button"
+          id="chatMenuButton"
+          aria-label="Меню чата"
+        >
+          ⋮
+        </button>
+        {{#if isMenuOpen}}
+          <div class="chat-page__menu">
+            <button
+              type="button"
+              class="chat-page__menu-item"
+              id="addUserButton"
+            >
+              <span class="chat-page__menu-icon">+</span>
+              <span>Добавить пользователя</span>
+            </button>
+
+            <button
+              type="button"
+              class="chat-page__menu-item"
+              id="deleteUserButton"
+            >
+              <span class="chat-page__menu-icon">×</span>
+              <span>Удалить пользователя</span>
+            </button>
+          </div>
+        {{/if}}
+      </header>
+      {{#if popupType}}
+        <div class="chat-page__popup-overlay" id="popupOverlay">
+          <div class="chat-page__popup">
+            {{#if (eq popupType "add")}}
+              <h2 class="chat-page__popup-title">
+                Добавить пользователя
+              </h2>
+
+              <form class="chat-page__popup-form" ref="userForm">
+                {{{ Input
+                  name="login"
+                  type="text"
+                  placeholder="Логин"
+                  label="Логин"
+                  className="chat-page__popup-input"
+                }}}
+
+                {{{ Button
+                  type="submit"
+                  className="chat-page__popup-button"
+                  label="Добавить"
+                }}}
+              </form>
+            {{else}}
+              <h2 class="chat-page__popup-title">
+                Удалить пользователя
+              </h2>
+
+              <form class="chat-page__popup-form" ref="userForm">
+                {{{ Input
+                  name="login"
+                  type="text"
+                  placeholder="Логин"
+                  label="Логин"
+                  className="chat-page__popup-input"
+                }}}
+
+                {{{ Button
+                  type="submit"
+                  className="chat-page__popup-button"
+                  label="Удалить"
+                }}}
+              </form>
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
+
+      <div class="chat-page__messages">
+      </div>
+
+    {{else}}
+      {{{ Paragraph
+        text="Выберите чат чтобы отправить сообщение"
+        className="chat-page__paragraph"
+      }}}
+    {{/if}}
+
     <form class="form new-message" ref="messageForm">
       {{{ Input
         name="message"

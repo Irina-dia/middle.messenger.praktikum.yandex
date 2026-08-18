@@ -39,7 +39,6 @@
     min-height: 130px;
     margin-bottom: 21px;
     display: inline-block;
-    cursor: pointer;
 
     &::after {
       position: absolute;
@@ -52,23 +51,28 @@
       z-index: 1;
     }
 
-    &:hover::after,
-    &:hover .profile__image_overlay {
+    &_edit {
+    cursor: pointer;
+
+      &:hover::after,
+      &:hover .profile__image_overlay {
         opacity: 1;
+      }
     }
   }
 
   &__image {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
     max-width: 100%;
     max-height: 100%;
+    border-radius: 50%;
   }
 
   &__image_overlay {
     position: absolute;
-    top: 50%;
+    top: calc(100% - 21px);
     left: 50%;
     transform: translate(-50%, -50%);
     color: $white;

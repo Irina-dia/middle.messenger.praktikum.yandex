@@ -7,5 +7,7 @@ export interface ChatItemProps {
     author: string;
     text: string;
     time: string;
-  };
+  } | null;
+  isActive?: boolean;
+  onClick?: (id: number) => void;
 }
