@@ -5,6 +5,6 @@ export function getFormData(form: HTMLFormElement): Record<string, FormDataEntry
   formData.forEach((value, key) => {
     data[key] = value;
   });
-  
+
   return data;
 }
