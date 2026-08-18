@@ -1,0 +1,14 @@
+
+<div class="profile__row">
+  <div class="profile-input__wrapper">
+  <label for="{{name}}" class="profile__label">{{label}}</label>
+  <input
+    id="{{name}}"
+    name="{{name}}"
+    type="{{type}}"
+    value="{{value}}"
+    class="profile__input input"
+    {{#if isReadonly}}readonly{{/if}}
+  ></div>
+<span class="profile-input__error"></span>
+</div>

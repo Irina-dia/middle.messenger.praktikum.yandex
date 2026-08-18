@@ -1,0 +1,74 @@
+<main class="main">
+  <div class="registration__wrapper">
+    <div class="registration">
+      {{{ Title
+        title="Регистрация"
+      }}}
+      <form class="form registration__form" method="post" ref="registrationForm" novalidate>
+        <div class="form__fields">
+
+          {{{ Input
+            name="email"
+            type="email"
+            placeholder="Почта"
+            label="Почта"
+          }}}
+
+          {{{ Input
+            name="login"
+            type="text"
+            placeholder="Логин"
+            label="Логин"
+          }}}
+
+          {{{ Input
+            name="first_name"
+            type="text"
+            placeholder="Имя"
+            label="Имя"
+          }}}
+
+          {{{ Input
+            name="second_name"
+            type="text"
+            placeholder="Фамилия"
+            label="Фамилия"
+          }}}
+
+          {{{ Input
+            name="phone"
+            type="tel"
+            placeholder="Телефон"
+            label="Телефон"
+          }}}
+
+          {{{ Input
+            name="password"
+            type="password"
+            placeholder="Пароль"
+            label="Пароль"
+          }}}
+
+          {{{ Input
+            name="repeat_password"
+            type="password"
+            placeholder="Пароль (ещё раз)"
+            label="Пароль (ещё раз)"
+          }}}
+        </div>
+
+        <div class="form__action">
+          {{{ Button
+            type="submit"
+            label="Зарегистрироваться"
+          }}}
+
+          {{{ Link
+            text="Войти"
+            href="/"
+          }}}
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
