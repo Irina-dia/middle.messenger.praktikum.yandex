@@ -32,7 +32,7 @@ export const validationRules: Record<FieldName, ValidationRule> = {
   display_name: {
     regExp: /^(?!\d+$)[a-zA-Zа-яА-Я0-9_-]{3,20}$/,
     errorMessage: 'Отображаемое имя должно содержать латиницу, 3–20 символов, цифры, без пробелов, допустимы дефис и подчёркивание.',
-  },  
+  },
 
   login: {
     regExp: /^(?!\d+$)[a-zA-Z0-9_-]{3,20}$/,
@@ -43,7 +43,7 @@ export const validationRules: Record<FieldName, ValidationRule> = {
     regExp: /^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/,
     errorMessage: 'Почта должна быть на латинице, содержать цифры и спецсимволы. Обязательны @ и точка после него. Между @ и точкой должны быть буквы.',
   },
-  
+
   phone: {
     regExp: /^\+?\d{10,15}$/,
     errorMessage: 'Телефон должен содержать от 10 до 15 цифр и может начинаться со знака "+"',
