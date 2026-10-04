@@ -96,6 +96,15 @@
               <span class="chat-page__menu-icon">×</span>
               <span>Удалить пользователя</span>
             </button>
+
+            <button
+              type="button"
+              class="chat-page__menu-item"
+              id="deleteChatButton"
+            >
+              <span class="chat-page__menu-icon">×</span>
+              <span>Удалить чат</span>
+            </button>
           </div>
         {{/if}}
       </header>
@@ -148,6 +157,16 @@
       {{/if}}
 
       <div class="chat-page__messages">
+        {{#each messages}}
+          <div class="chat-page__message {{#if isMine}}chat-page__message_mine{{else}}chat-page__message_other{{/if}}">
+            <div class="chat-page__message-content">
+              {{content}}
+            </div>
+            <time class="chat-page__message-time">
+              {{displayTime}}
+            </time>
+          </div>
+        {{/each}}
       </div>
 
     {{else}}

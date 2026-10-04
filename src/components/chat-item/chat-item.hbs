@@ -20,13 +20,13 @@
       </div>
       {{#with lastMessage}}
         <div class="chat-item__message">
-          {{#if (eq author "memberName")}}
+          {{#if (eq author "Вы")}}
             <span class="chat-item__message_dark">
               Вы:
             </span>
-            {{{text}}}
+            {{text}}
           {{else}}
-            {{{text}}}
+            {{text}}
           {{/if}}
         </div>
       {{/with}}

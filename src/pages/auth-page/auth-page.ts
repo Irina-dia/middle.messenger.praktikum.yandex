@@ -41,8 +41,6 @@ export class AuthPage extends Block {
         .then((user) => {
           store.set('user', user);
 
-          console.log('Пользователь записан в Store:', user);
-
           Router.getInstance().go('/messenger');
         })
         .catch((error) => {

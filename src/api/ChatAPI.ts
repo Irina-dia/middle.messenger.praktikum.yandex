@@ -10,6 +10,10 @@ export interface ChatUsersData {
   chatId: number;
 }
 
+export interface ChatTokenResponse {
+  token: string;
+}
+
 export interface Chat {
   id: number;
   title: string;
@@ -52,5 +56,19 @@ export class ChatAPI {
     return this.transport.delete(`${API_URL}/chats/users`, {
       data,
     });
+  }
+
+  deleteChat(chatId: number) {
+    return this.transport.delete(`${API_URL}/chats`, {
+      data: {
+        chatId,
+      },
+    });
+  }
+
+  getChatToken(chatId: number): Promise<ChatTokenResponse> {
+    return this.transport.post(
+      `${API_URL}/chats/token/${chatId}`,
+    ) as Promise<ChatTokenResponse>;
   }
 }
