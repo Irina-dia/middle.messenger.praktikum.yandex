@@ -1,0 +1,44 @@
+@import './variables';
+@import './mixins';
+@import '../../components/button/button';
+@import '../../components/link/link';
+@import '../../components/input/input';
+@import '../../components/title/title';
+@import '../../components/paragraph/paragraph';
+@import '../../components/chat-item/chat-item';
+@import '../../components/input-profile/input-profile';
+@import '../../pages/auth-page/auth-page';
+@import '../../pages/registration-page/registration-page';
+@import '../../pages/chat-page/chat-page';
+@import '../../pages/profile-page/profile-page';
+@import './error-page';
+
+body {
+  color: $main-black;
+  font-family: $font-family;
+}
+
+.form {
+  &__fields {
+    width: 100%;
+    @include flex-column-center;
+    gap: 12px;
+  }
+
+  &__action {
+    width: 100%;
+    @include flex-column-center;
+    gap: 14px;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background: $snow;
+  border-right: 1px solid #eaeaea;
+}
+
+.error_show {
+  display: block;
+}

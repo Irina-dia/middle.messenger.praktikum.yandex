@@ -1,0 +1,15 @@
+.button {
+  width: 100%;
+  @include flex-center;
+  box-sizing: border-box;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1;
+  color: $white;
+  border-radius: 8px;
+  background: $blue;  
+  margin: 0;
+  padding: 12px 0;
+  border: none;
+  cursor: pointer;
+}

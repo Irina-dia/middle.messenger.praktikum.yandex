@@ -1,0 +1,49 @@
+.input {
+  width: 100%;
+  position: relative;
+  display: block;
+
+  &__field {
+    width: 100%;
+    padding: 15px 0 7px;
+    border: none;
+    border-bottom: 1px solid $blue;
+    outline: none;
+    font-size: 13px;
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 100%;
+    color: $gray;
+    transition: all 0.2s ease;
+    pointer-events: none;
+  }
+
+  &__field:focus + &__label,
+  &__field:not(:placeholder-shown) + &__label {
+    top: 0;
+    font-size: 9px;
+    color: $gray;
+  }
+
+  &__error {
+    text-align: center;
+    font-weight: 400;
+    color: $bright-red;
+    font-size: 8px;
+    line-height: 1;
+  }
+}
+
+.input:has(input[name="password"]:focus) {
+  margin-top: 20px;
+}
