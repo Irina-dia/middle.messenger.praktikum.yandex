@@ -4,7 +4,8 @@ import { Router } from './lib/Router';
 import { Route } from './lib/Route';
 import { AuthAPI } from './api/AuthAPI';
 import { store } from './utils/Store';
-import { ChatAPI } from './api/ChatAPI';
+import { ChatAPI, type Chat } from './api/ChatAPI';
+import { formatTime } from './utils/formatTime';
 
 import eq from './assets/helpers/eq';
 
@@ -52,29 +53,23 @@ authAPI.getUser()
   .then((user) => {
     store.set('user', user);
 
-    console.log('Авторизация подтверждена:', user);
-
     return chatAPI.getChats()
       .then((chats) => {
-        const chatItems = (chats as Array<{
-          id: number;
-          title: string;
-          avatar: string | null;
-          unread_count: number;
-          last_message: {
-            content: string;
-          } | null;
-        }>).map((chat) => ({
+        const chatItems = (chats as Chat[]).map((chat) => ({
           id: chat.id,
           title: chat.title,
           avatarUrl: chat.avatar,
           unreadCount: chat.unread_count,
-          lastMessage: chat.last_message?.content ?? '',
+          lastMessage: chat.last_message
+            ? {
+                author: chat.last_message.user.login,
+                text: chat.last_message.content,
+                time: formatTime(chat.last_message.time),
+              }
+            : null,
         }));
 
         store.set('chats', chatItems);
-
-        console.log('Чаты загружены:', chatItems);
       })
       .catch((error) => {
         console.error('Ошибка загрузки чатов:', error);
@@ -83,8 +78,6 @@ authAPI.getUser()
   })
   .catch(() => {
     store.set('user', null);
-
-    console.log('Пользователь не авторизован');
   })
   .finally(() => {
     router.start();

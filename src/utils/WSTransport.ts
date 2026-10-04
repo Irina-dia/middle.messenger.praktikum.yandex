@@ -23,8 +23,13 @@ export class WSTransport {
         reject(new Error('WebSocket connection error'));
       };
 
-      this.socket.onclose = () => {
-        console.log('WebSocket соединение закрыто');
+      this.socket.onclose = (event) => {
+        if (!event.wasClean) {
+          console.error('WebSocket соединение закрыто с ошибкой', {
+            code: event.code,
+            reason: event.reason,
+          });
+        }
       };
     });
   }

@@ -58,6 +58,14 @@ export class ChatAPI {
     });
   }
 
+  deleteChat(chatId: number) {
+    return this.transport.delete(`${API_URL}/chats`, {
+      data: {
+        chatId,
+      },
+    });
+  }
+
   getChatToken(chatId: number): Promise<ChatTokenResponse> {
     return this.transport.post(
       `${API_URL}/chats/token/${chatId}`,

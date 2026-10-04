@@ -31,8 +31,6 @@ export class RegistrationPage extends Block {
 
       const data = getFormData(form);
 
-      console.log('Данные регистрации:', data);
-
       this.authAPI.signup({
         email: String(data.email),
         login: String(data.login),
@@ -46,9 +44,6 @@ export class RegistrationPage extends Block {
         })
         .then((user) => {
           store.set('user', user);
-
-          console.log('Пользователь зарегистрирован:', user);
-          console.log('Store:', store.getState());
 
           Router.getInstance().go('/messenger');
         })

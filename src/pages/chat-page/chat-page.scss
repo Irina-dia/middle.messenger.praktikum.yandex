@@ -185,6 +185,56 @@
   &__popup-button {
     margin-top: 5px;
   }
+
+  &__messages {
+    width: 100%;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+  }
+
+  &__message {
+    max-width: 70%;
+    padding: 11px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    overflow-wrap: anywhere;
+  }
+
+  &__message_mine {
+    align-self: flex-end;
+    background: $light-steel-blue;
+    border-radius: 12px 12px 0;
+  }
+
+  &__message_other {
+    align-self: flex-start;
+    background: $ghost-white;
+    border-radius: 0 12px 12px;
+  }
+
+  &__message-content {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 125%;
+    color: $main-black;
+  }
+
+  &__message-time {
+    align-self: flex-end;
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 1;
+    color: $blue;
+    white-space: nowrap;
+  }
 }
 
 .new-message {

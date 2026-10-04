@@ -76,8 +76,6 @@ export class ProfilePage extends Block<ProfilePageProps> {
             user,
           });
 
-          console.log('Профиль обновлён:', user);
-
           this.setMode('view');
         })
         .catch((error) => {
@@ -137,8 +135,6 @@ export class ProfilePage extends Block<ProfilePageProps> {
 
       this.userAPI.updatePassword(passwordData)
         .then(() => {
-          console.log('Пароль успешно изменён');
-
           this.setMode('view');
         })
         .catch((error) => {
@@ -167,9 +163,6 @@ export class ProfilePage extends Block<ProfilePageProps> {
       this.authAPI.logout()
         .then(() => {
           store.set('user', null);
-
-          console.log('Выход выполнен');
-          console.log('Store:', store.getState());
 
           Router.getInstance().go('/');
         })
@@ -215,8 +208,6 @@ export class ProfilePage extends Block<ProfilePageProps> {
           this.setProps({
             user,
           });
-
-          console.log('Аватар обновлён:', user);
         })
         .catch((error) => {
           const message = getErrorMessage(error);
