@@ -15,12 +15,14 @@
     "lint:eslint": "eslint .",
     "lint:style": "stylelint \"**/*.{css,scss}\"",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.7.0",
     "globals": "^17.7.0",
+    "husky": "^9.1.7",
     "jsdom": "^30.1.1",
     "postcss-scss": "^4.0.9",
     "sass": "^1.100.0",

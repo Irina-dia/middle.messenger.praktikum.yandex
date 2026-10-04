@@ -148,6 +148,11 @@
       {{/if}}
 
       <div class="chat-page__messages">
+        {{#each messages}}
+          <div class="chat-page__message">
+            {{content}}
+          </div>
+        {{/each}}
       </div>
 
     {{else}}

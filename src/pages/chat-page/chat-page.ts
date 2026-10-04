@@ -5,6 +5,7 @@ import { store } from '../../utils/Store';
 import { ChatAPI } from '../../api/ChatAPI';
 import { UserAPI } from '../../api/UserAPI';
 import { getErrorMessage } from '../../utils/getErrorMessage';
+import { WSTransport } from '../../utils/WSTransport';
 import template from './chat-page.hbs?raw';
 interface ChatPageProps {
   chats: ChatItemData[];
@@ -12,6 +13,7 @@ interface ChatPageProps {
   selectedChatId: number | null;
   isMenuOpen: boolean;
   popupType: 'add' | 'delete' | null;
+  messages: ChatMessage[];
 }
 
 interface ChatItemData {
@@ -27,6 +29,14 @@ interface ChatItemData {
   isActive?: boolean;
 }
 
+interface ChatMessage {
+  id: number;
+  user_id: number;
+  time: string;
+  content: string;
+  type: string;
+}
+
 export class ChatPage extends Block<ChatPageProps> {
   protected template = template;
 
@@ -38,8 +48,53 @@ export class ChatPage extends Block<ChatPageProps> {
 
   private isMenuOpen = false;
 
+  private ws: WSTransport | null = null;
+
+  private connectToChat(chatId: number) {
+    const user = store.getState().user as { id: number } | null;
+
+    if (!user) {
+      console.error('Пользователь не найден');
+      return;
+    }
+
+    this.chatAPI.getChatToken(chatId)
+      .then(({ token }) => {
+        const url =
+          `wss://ya-praktikum.tech/ws/chats/${user.id}/${chatId}/${token}`;
+
+        this.ws?.close();
+
+        this.ws = new WSTransport(url);
+
+        return this.ws.connect();
+      })
+      .then(() => {
+        console.log('WebSocket подключён');
+
+        this.ws?.onMessage((data) => {
+          const messages = Array.isArray(data)
+            ? data as ChatMessage[]
+            : [...this.props.messages, data as ChatMessage];
+
+          this.setProps({
+            messages,
+          });
+        });
+
+        this.ws?.send({
+          type: 'get old',
+          content: '0',
+        });
+      })
+      .catch((error) => {
+        console.error('Ошибка WebSocket:', error);
+      });
+  }
+
   private handleChatClick = (chatId: number) => {
     this.selectedChatId = chatId;
+    this.connectToChat(chatId);
     this.isMenuOpen = false;
 
     const chats = this.props.chats.map((chat) => ({
@@ -50,6 +105,7 @@ export class ChatPage extends Block<ChatPageProps> {
     this.setProps({
       chats,
       selectedChatId: chatId,
+      messages: [],
     });
 
     console.log('Выбран чат в ChatPage:', chatId);
@@ -136,6 +192,7 @@ export class ChatPage extends Block<ChatPageProps> {
       selectedChatId: null,
       isMenuOpen: false,
       popupType: null,
+      messages: [],
     });
 
     this.props.onChatClick = this.handleChatClick;
@@ -219,7 +276,11 @@ export class ChatPage extends Block<ChatPageProps> {
       }
 
       const data = getFormData(form);
-      console.log('Сообщение:', data);
+
+      this.ws?.send({
+        type: 'message',
+        content: String(data.message),
+      });
     });
 
     if (!(newChatForm instanceof HTMLFormElement)) {
@@ -307,5 +368,10 @@ export class ChatPage extends Block<ChatPageProps> {
       });
     }
 
+  }
+
+  protected componentWillUnmount() {
+    this.ws?.close();
+    this.ws = null;
   }
 }
